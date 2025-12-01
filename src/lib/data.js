@@ -32,7 +32,7 @@ export async function obtenerAutorDB(id) {
 
 
 export async function obtenerLibrosDB(query) {
-    const sql = 'select * from `libros` where nombre like ?';
+    const sql = 'select * from `libros` where titulo like ?';
     const values = ["%" + query + "%"]
     // const values = ['%teclado%', "%a%"]
     const [libros] = await db.query(sql, values);
@@ -94,7 +94,7 @@ export async function obtenerLibrosAPI(query) {
     // Introducimos un retardo artificial
     // await new Promise(resolve => setTimeout(resolve, 2000))
 
-    return libros.filter(a => a.nombre.toLowerCase().includes(query))
+    return libros.filter(a => a.titulo.toLowerCase().includes(query))
 }
 
 

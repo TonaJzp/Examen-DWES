@@ -10,12 +10,12 @@ import { deleteCookie, setCookie } from "@/lib/cookies";
 
 
 export async function nuevoAutorDB(formData) {
-    const titulo = formData.get('titulo')
+    const nombre = formData.get('nombre')
     const lugar_nacimiento = formData.get('lugar_nacimiento')
     const premio_nobel = formData.get('premio_nobel')
 
-    const sql = 'insert into autores (titulo, lugar_nacimiento, premio_nobel) values (?, ?, ?)'
-    const values = [titulo, lugar_nacimiento, premio_nobel];
+    const sql = 'insert into autores (nombre, lugar_nacimiento, premio_nobel) values (?, ?, ?)'
+    const values = [nombre, lugar_nacimiento, premio_nobel];
 
     const [result, fields] = await db.query(sql, values)
     revalidatePath('/autores-db')
@@ -24,12 +24,12 @@ export async function nuevoAutorDB(formData) {
 
 export async function editarAutorDB(formData) {
     const id = formData.get('id')
-    const titulo = formData.get('titulo')
+    const nombre = formData.get('nombre')
     const lugar_nacimiento = formData.get('lugar_nacimiento')
     const premio_nobel = formData.get('premio_nobel')
 
-    const sql = 'update autores set titulo=?, lugar_nacimiento=?, premio_nobel=? where id=?'
-    const values = [titulo, lugar_nacimiento, premio_nobel, id];
+    const sql = 'update autores set nombre=?, lugar_nacimiento=?, premio_nobel=? where id=?'
+    const values = [nombre, lugar_nacimiento, premio_nobel, id];
 
     const [result, fields] = await db.query(sql, values)
     revalidatePath('/autores-db')
@@ -96,11 +96,11 @@ export async function eliminarLibroDB(formData) {
 // API
 
 export async function nuevoAutorAPI(formData) {
-    const [titulo, lugar_nacimiento, premio_nobel] = formData.values()
+    const [nombre, lugar_nacimiento, premio_nobel] = formData.values()
 
     const response = await fetch('http://localhost:3001/autores', {
         method: 'POST',
-        body: JSON.stringify({ titulo, lugar_nacimiento, premio_nobel, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ nombre, lugar_nacimiento, premio_nobel, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
 
@@ -109,11 +109,11 @@ export async function nuevoAutorAPI(formData) {
 
 
 export async function editarAutorAPI(formData) {
-    const [id, titulo, lugar_nacimiento, premio_nobel] = formData.values()
+    const [id, nombre, lugar_nacimiento, premio_nobel] = formData.values()
 
     const response = await fetch('http://localhost:3001/autores/' + id, {
         method: 'PUT',
-        body: JSON.stringify({ titulo, lugar_nacimiento, premio_nobel, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ nombre, lugar_nacimiento, premio_nobel, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
     revalidatePath('/autores-api')
@@ -170,8 +170,8 @@ export async function eliminarLibroAPI(formData) {
 
 
 const usuarios = [
-    { titulo: 'usuario1', key: 'usuario1' },
-    { titulo: 'usuario2', key: 'usuario2' },
+    { nombre: 'usuario1', key: 'usuario1' },
+    { nombre: 'usuario2', key: 'usuario2' },
 ]
 
 export async function login(formData) {
@@ -185,7 +185,7 @@ export async function login(formData) {
 
     // Comprobar si credenciales son válidas
     // const authenticated = true  // suponemos que son válidas
-    const encontrado = usuarios.find(usuario => name == usuario.titulo && key == usuario.key)
+    const encontrado = usuarios.find(usuario => name == usuario.nombre && key == usuario.key)
 
     if (!encontrado) return
 

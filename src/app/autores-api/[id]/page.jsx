@@ -17,8 +17,8 @@ async function ProductPage({ params }) {
             </h1>
             <div className="flex flex-col gap-10 items-center mt-20 p-10 bg-blue-100 rounded-xl">
                 <p className="text-6xl place-self-center">{autor.nombre}</p>
-                <p className="text-2xl place-self-center text-slate-400">{autor.localidad}</p>
-                <p className="text-7xl place-self-center text-blue-400 *:font-bold">{autor.fecha_nacimiento.toLocaleString()}</p>
+                <p className="text-2xl place-self-center text-slate-400">{autor.lugar_nacimiento}</p>
+                <p className="text-7xl place-self-center text-blue-400 *:font-bold">{autor.premio_nobel.toLocaleString()}</p>
             </div>
         </section>
     );

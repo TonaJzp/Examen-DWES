@@ -16,9 +16,9 @@ async function PaginaLibro({ params }) {
                 Libro #{libro.id}
             </h1>
             <div className="flex flex-col gap-10 items-center mt-20 p-10 bg-blue-100 rounded-xl">
-                <p className="text-6xl place-self-center">{libro.nombre}</p>
-                <p className="text-2xl place-self-center text-slate-400">{libro.especialidad}</p>
-                <p className="text-7xl place-self-center text-blue-400 *:font-bold">{libro.estado_civil}</p>
+                <p className="text-6xl place-self-center">{libro.titulo}</p>
+                <p className="text-2xl place-self-center text-slate-400">{libro.editorial}</p>
+                <p className="text-7xl place-self-center text-blue-400 *:font-bold">{libro.fecha_publicacion}</p>
             </div>
         </section>
     );

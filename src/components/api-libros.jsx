@@ -25,7 +25,7 @@ async function Libros({ query }) {
                 {libros.sort((a, b) => a.createdAt - b.createdAt).reverse()  // Orden inverso de tiempo                           
                     .map((libro) => (
                         <div key={libro.id} className='p-2 odd:bg-slate-100 flex justify-between'>
-                            <Link href={`/libros-api/${libro.id}`}>{libro.nombre}</Link>
+                            <Link href={`/libros-api/${libro.id}`}>{libro.titulo}</Link>
                             <div className='flex gap-6'>
                                 <LibroEditarAPI libro={libro} />
                                 <form>
