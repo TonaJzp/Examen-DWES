@@ -2,12 +2,12 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Fallback from "@/components/fallback";
-import Alumnos from "@/components/db-autores";
-import AlumnoNuevo from "@/components/db-autor-nuevo";
+import Autores from "@/components/db-autores";
+import AutorNuevo from "@/components/db-autor-nuevo";
 
 
 
-async function AlumnosPage({ searchParams }) {
+async function AutoresPage({ searchParams }) {
     let { query } = await searchParams
     query ??= ''
 
@@ -22,14 +22,14 @@ async function AlumnosPage({ searchParams }) {
             </h1>
 
 
-            <AlumnoNuevo />
+            <AutorNuevo />
 
 
             <Suspense fallback={<Fallback>Obteniendo datos ... </Fallback>}>
-                <Alumnos query={query} />
+                <Autores query={query} />
             </Suspense>
         </section>
     );
 }
 
-export default AlumnosPage;
+export default AutoresPage;

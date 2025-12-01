@@ -1,47 +1,47 @@
 'use client'
-import { editarProfesorDB } from "@/lib/actions";
+import { editarLibroDB } from "@/lib/actions";
 import { useState } from "react";
 
 
-function ProfesorEditarDB({ profesor }) {
+function LibroEditarDB({ libro }) {
     const [visible, setVisible] = useState(false)
 
     return (
         <>
             {visible &&
                 <form className='my-10 grid grid-cols-[150px_auto] gap-4'>
-                    <input type="hidden" name='id' defaultValue={profesor.id} />
+                    <input type="hidden" name='id' defaultValue={libro.id} />
 
-                    <label htmlFor='nombre'>Nombre</label>
+                    <label htmlFor='titulo'>Titulo</label>
                     <input
                         required
-                        id='nombre'
-                        name='nombre'
-                        defaultValue={profesor.nombre}
+                        id='titulo'
+                        name='titulo'
+                        defaultValue={libro.titulo}
                         className='p-1 border border-slate-200 focus:outline-blue-300 text-lg'
                     />
 
-                    <label htmlFor='especialidad'>Especialidad:</label>
+                    <label htmlFor='editorial'>Editorial:</label>
                     <input
                         required
-                        id='especialidad'
-                        name='especialidad'
-                        defaultValue={profesor.especialidad}
+                        id='editorial'
+                        name='editorial'
+                        defaultValue={libro.editorial}
                         className='p-1 border border-slate-200 focus:outline-blue-300 text-lg'
                     />
 
-                    <label htmlFor='estado_civil'>Estado civil</label>
+                    <label htmlFor='fecha_publicacion'>Fecha de publicacion</label>
                     <input
                         required
-                        id='estado_civil'
-                        name='estado_civil'
-                        defaultValue={profesor.estado_civil}
+                        id='fecha_publicacion'
+                        name='fecha_publicacion'
+                        defaultValue={libro.fecha_publicacion}
                         className='p-1 border border-slate-200 focus:outline-blue-300 text-lg'
                     />
 
                     <div className='col-span-2 grid gap-2'>
-                        <button formAction={editarProfesorDB} className='bg-green-600 text-white px-4 py-2 rounded-xl'>
-                            Actualizar profesor
+                        <button formAction={editarLibroDB} className='bg-green-600 text-white px-4 py-2 rounded-xl'>
+                            Actualizar libro
                         </button>
                     </div>
                 </form>
@@ -53,4 +53,4 @@ function ProfesorEditarDB({ profesor }) {
     );
 }
 
-export default ProfesorEditarDB;
+export default LibroEditarDB;

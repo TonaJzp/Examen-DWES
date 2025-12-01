@@ -21,22 +21,22 @@ function AutorEditarDB({ autor }) {
                         className='p-1 border border-slate-200 focus:outline-blue-300 text-lg'
                     />
 
-                    <label htmlFor='localidad'>Localidad:</label>
+                    <label htmlFor='lugar_nacimiento'>Lugar de Nacimiento:</label>
                     <input
                         required
-                        id='localidad'
-                        name='localidad'
-                        defaultValue={autor.localidad}
+                        id='lugar_nacimiento'
+                        name='lugar_nacimiento'
+                        defaultValue={autor.lugar_nacimiento}
                         className='p-1 border border-slate-200 focus:outline-blue-300 text-lg'
                     />
 
-                    <label htmlFor='fecha_nacimiento'>Fecha de nacimiento</label>
+                    <label htmlFor='premio_nobel'>Premio Nobel</label>
                     <input
                         required
-                        id='fecha_nacimiento'
-                        name='fecha_nacimiento'
+                        id='premio_nobel'
+                        name='premio_nobel'
                         type='date'
-                        defaultValue={autor.fecha_nacimiento}
+                        defaultValue={autor.premio_nobel}
                         className='p-1 border border-slate-200 focus:outline-blue-300 text-lg'
                     />
 

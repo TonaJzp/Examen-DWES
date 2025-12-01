@@ -2,12 +2,12 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Fallback from "@/components/fallback";
-import Profesores from "@/components/db-libros";
-import ProfesorNuevo from "@/components/db-libro-nuevo";
+import Libros from "@/components/db-libros";
+import LibroNuevo from "@/components/db-libro-nuevo";
 
 
 
-async function PaginaProfesores({ searchParams }) {
+async function PaginaLibros({ searchParams }) {
     let { query } = await searchParams
     query ??= ''
 
@@ -22,14 +22,14 @@ async function PaginaProfesores({ searchParams }) {
             </h1>
 
 
-            <ProfesorNuevo />
+            <LibroNuevo />
 
 
             <Suspense fallback={<Fallback>Obteniendo datos ... </Fallback>}>
-                <Profesores query={query} />
+                <Libros query={query} />
             </Suspense>
         </section>
     );
 }
 
-export default PaginaProfesores;
+export default PaginaLibros;

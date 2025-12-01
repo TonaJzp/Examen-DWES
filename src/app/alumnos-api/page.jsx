@@ -2,11 +2,11 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Fallback from "@/components/fallback";
-import Alumnos from "@/components/api-autores";
-import AlumnoNuevoAPI from "@/components/api-autor-nuevo";
+import Autores from "@/components/api-autores";
+import AutorNuevoAPI from "@/components/api-autor-nuevo";
 
 
-async function AlumnosPage({ searchParams }) {
+async function AutoresPage({ searchParams }) {
     let { query } = await searchParams
     query ??= ''
 
@@ -18,14 +18,14 @@ async function AlumnosPage({ searchParams }) {
                 API REST
             </h1>
 
-            <AlumnoNuevoAPI />
+            <AutorNuevoAPI />
 
 
             <Suspense fallback={<Fallback>Obteniendo datos ... </Fallback>}>
-                <Alumnos query={query} />
+                <Autores query={query} />
             </Suspense>
         </section>
     );
 }
 
-export default AlumnosPage;
+export default AutoresPage;
