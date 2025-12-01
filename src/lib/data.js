@@ -67,7 +67,7 @@ export async function obtenerAutoresAPI(query) {
     const autores = await response.json()
 
     // Introducimos un retardo artificial
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // await new Promise(resolve => setTimeout(resolve, 2000))
 
     return autores.filter(a => a.nombre.toLowerCase().includes(query))
 }
@@ -92,7 +92,7 @@ export async function obtenerLibrosAPI(query) {
     const libros = await response.json()
 
     // Introducimos un retardo artificial
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // await new Promise(resolve => setTimeout(resolve, 2000))
 
     return libros.filter(a => a.nombre.toLowerCase().includes(query))
 }

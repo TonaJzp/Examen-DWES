@@ -12,10 +12,10 @@ import { deleteCookie, setCookie } from "@/lib/cookies";
 export async function nuevoAutorDB(formData) {
     const titulo = formData.get('titulo')
     const lugar_nacimiento = formData.get('lugar_nacimiento')
-    const premio_novel = formData.get('premio_novel')
+    const premio_nobel = formData.get('premio_nobel')
 
-    const sql = 'insert into autores (titulo, lugar_nacimiento, premio_novel) values (?, ?, ?)'
-    const values = [titulo, lugar_nacimiento, premio_novel];
+    const sql = 'insert into autores (titulo, lugar_nacimiento, premio_nobel) values (?, ?, ?)'
+    const values = [titulo, lugar_nacimiento, premio_nobel];
 
     const [result, fields] = await db.query(sql, values)
     revalidatePath('/autores-db')
@@ -26,10 +26,10 @@ export async function editarAutorDB(formData) {
     const id = formData.get('id')
     const titulo = formData.get('titulo')
     const lugar_nacimiento = formData.get('lugar_nacimiento')
-    const premio_novel = formData.get('premio_novel')
+    const premio_nobel = formData.get('premio_nobel')
 
-    const sql = 'update autores set titulo=?, lugar_nacimiento=?, premio_novel=? where id=?'
-    const values = [titulo, lugar_nacimiento, premio_novel, id];
+    const sql = 'update autores set titulo=?, lugar_nacimiento=?, premio_nobel=? where id=?'
+    const values = [titulo, lugar_nacimiento, premio_nobel, id];
 
     const [result, fields] = await db.query(sql, values)
     revalidatePath('/autores-db')
@@ -96,11 +96,11 @@ export async function eliminarLibroDB(formData) {
 // API
 
 export async function nuevoAutorAPI(formData) {
-    const [titulo, lugar_nacimiento, premio_novel] = formData.values()
+    const [titulo, lugar_nacimiento, premio_nobel] = formData.values()
 
     const response = await fetch('http://localhost:3001/autores', {
         method: 'POST',
-        body: JSON.stringify({ titulo, lugar_nacimiento, premio_novel, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ titulo, lugar_nacimiento, premio_nobel, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
 
@@ -109,11 +109,11 @@ export async function nuevoAutorAPI(formData) {
 
 
 export async function editarAutorAPI(formData) {
-    const [id, titulo, lugar_nacimiento, premio_novel] = formData.values()
+    const [id, titulo, lugar_nacimiento, premio_nobel] = formData.values()
 
     const response = await fetch('http://localhost:3001/autores/' + id, {
         method: 'PUT',
-        body: JSON.stringify({ titulo, lugar_nacimiento, premio_novel, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ titulo, lugar_nacimiento, premio_nobel, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
     revalidatePath('/autores-api')
