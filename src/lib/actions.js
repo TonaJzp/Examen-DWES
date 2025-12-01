@@ -170,8 +170,8 @@ export async function eliminarLibroAPI(formData) {
 
 
 const usuarios = [
-    { nombre: 'usuario1', key: 'usuario1' },
-    { nombre: 'usuario2', key: 'usuario2' },
+    { nombre: 'ana', key: 'ana' },
+    { nombre: 'eva', key: 'eva' },
 ]
 
 export async function login(formData) {
