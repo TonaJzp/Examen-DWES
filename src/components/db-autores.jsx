@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Buscar from '@/components/buscar'
 import { eliminarAlumnoDB } from '@/lib/actions'
 import { obtenerAlumnosDB } from '@/lib/data'
-import AlumnoEditarDB from './db-alumno-editar'
+import AlumnoEditarDB from './db-autor-editar'
 
 
 

@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Fallback from "@/components/fallback";
-import Alumnos from "@/components/api-alumnos";
-import AlumnoNuevoAPI from "@/components/api-alumno-nuevo";
+import Alumnos from "@/components/api-autores";
+import AlumnoNuevoAPI from "@/components/api-autor-nuevo";
 
 
 async function AlumnosPage({ searchParams }) {

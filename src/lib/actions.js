@@ -9,84 +9,84 @@ import { deleteCookie, setCookie } from "@/lib/cookies";
 // BASE DE DATOS
 
 
-export async function nuevoAlumnoDB(formData) {
-    const nombre = formData.get('nombre')
-    const localidad = formData.get('localidad')
-    const fecha_nacimiento = formData.get('fecha_nacimiento')
+export async function nuevoAutorDB(formData) {
+    const titulo = formData.get('titulo')
+    const lugar_nacimiento = formData.get('lugar_nacimiento')
+    const premio_novel = formData.get('premio_novel')
 
-    const sql = 'insert into alumnos (nombre, localidad, fecha_nacimiento) values (?, ?, ?)'
-    const values = [nombre, localidad, fecha_nacimiento];
+    const sql = 'insert into autores (titulo, lugar_nacimiento, premio_novel) values (?, ?, ?)'
+    const values = [titulo, lugar_nacimiento, premio_novel];
 
     const [result, fields] = await db.query(sql, values)
-    revalidatePath('/alumnos-db')
+    revalidatePath('/autores-db')
 }
 
 
-export async function editarAlumnoDB(formData) {
+export async function editarAutorDB(formData) {
     const id = formData.get('id')
-    const nombre = formData.get('nombre')
-    const localidad = formData.get('localidad')
-    const fecha_nacimiento = formData.get('fecha_nacimiento')
+    const titulo = formData.get('titulo')
+    const lugar_nacimiento = formData.get('lugar_nacimiento')
+    const premio_novel = formData.get('premio_novel')
 
-    const sql = 'update alumnos set nombre=?, localidad=?, fecha_nacimiento=? where id=?'
-    const values = [nombre, localidad, fecha_nacimiento, id];
+    const sql = 'update autores set titulo=?, lugar_nacimiento=?, premio_novel=? where id=?'
+    const values = [titulo, lugar_nacimiento, premio_novel, id];
 
     const [result, fields] = await db.query(sql, values)
-    revalidatePath('/alumnos-db')
+    revalidatePath('/autores-db')
 }
 
 
 
 
-export async function eliminarAlumnoDB(formData) {
+export async function eliminarAutorDB(formData) {
     const id = formData.get('id')
 
-    const sql = 'delete from alumnos where id = ?'
+    const sql = 'delete from autores where id = ?'
     const values = [id]
     await db.query(sql, values);
 
-    revalidatePath('/alumnos-db')
+    revalidatePath('/autores-db')
 }
 
 
 
-export async function nuevoProfesorDB(formData) {
-    const nombre = formData.get('nombre')
-    const especialidad = formData.get('especialidad')
-    const estado_civil = formData.get('estado_civil')
+export async function nuevoLibroDB(formData) {
+    const titulo = formData.get('titulo')
+    const editorial = formData.get('editorial')
+    const fecha_publicacion = formData.get('fecha_publicacion')
 
-    const sql = 'insert into profesores (nombre, especialidad, estado_civil) values (?, ?, ?)'
-    const values = [nombre, especialidad, estado_civil];
+    const sql = 'insert into libros (titulo, editorial, fecha_publicacion) values (?, ?, ?)'
+    const values = [titulo, editorial, fecha_publicacion];
 
     const [result, fields] = await db.query(sql, values)
-    revalidatePath('/profesores-db')
+    revalidatePath('/libros-db')
 }
 
 
-export async function editarProfesorDB(formData) {
+export async function editarLibroDB(formData) {
     const id = formData.get('id')
-    const nombre = formData.get('nombre')
-    const especialidad = formData.get('especialidad')
-    const estado_civil = formData.get('estado_civil')
+    const titulo = formData.get('titulo')
+    const editorial = formData.get('editorial')
+    const fecha_publicacion = formData.get('fecha_publicacion')
 
-    const sql = 'update profesores set nombre=?, especialidad=?, estado_civil=? where id=?'
-    const values = [nombre, especialidad, estado_civil, id];
+    const sql = 'update libros set titulo=?, editorial=?, fecha_publicacion=? where id=?'
+    const values = [titulo, editorial, fecha_publicacion, id];
 
     const [result, fields] = await db.query(sql, values)
-    revalidatePath('/profesores-db')
+    revalidatePath('/libros-db')
 }
 
 
 
 
-export async function eliminarProfesorDB(formData) {
+export async function eliminarLibroDB(formData) {
     const id = formData.get('id')
 
-    const sql = 'delete from profesores where id = ?'
+    const sql = 'delete from libros where id = ?'
     const values = [id]
     await db.query(sql, values);
 
-    revalidatePath('/profesores-db')
+    revalidatePath('/libros-db')
 }
 
 
@@ -95,71 +95,71 @@ export async function eliminarProfesorDB(formData) {
 
 // API
 
-export async function nuevoAlumnoAPI(formData) {
-    const [nombre, localidad, fecha_nacimiento] = formData.values()
+export async function nuevoAutorAPI(formData) {
+    const [titulo, lugar_nacimiento, premio_novel] = formData.values()
 
-    const response = await fetch('http://localhost:3001/alumnos', {
+    const response = await fetch('http://localhost:3001/autores', {
         method: 'POST',
-        body: JSON.stringify({ nombre, localidad, fecha_nacimiento, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ titulo, lugar_nacimiento, premio_novel, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
 
-    revalidatePath('/alumnos-api')
+    revalidatePath('/autores-api')
 }
 
 
-export async function editarAlumnoAPI(formData) {
-    const [id, nombre, localidad, fecha_nacimiento] = formData.values()
+export async function editarAutorAPI(formData) {
+    const [id, titulo, lugar_nacimiento, premio_novel] = formData.values()
 
-    const response = await fetch('http://localhost:3001/alumnos/' + id, {
+    const response = await fetch('http://localhost:3001/autores/' + id, {
         method: 'PUT',
-        body: JSON.stringify({ nombre, localidad, fecha_nacimiento, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ titulo, lugar_nacimiento, premio_novel, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
-    revalidatePath('/alumnos-api')
+    revalidatePath('/autores-api')
 }
 
 
-export async function eliminarAlumnoAPI(formData) {
+export async function eliminarAutorAPI(formData) {
     const id = formData.get('id')
 
-    await fetch('http://localhost:3001/alumnos/' + id, { method: 'DELETE' })
+    await fetch('http://localhost:3001/autores/' + id, { method: 'DELETE' })
 
-    revalidatePath('/alumnos-api')
+    revalidatePath('/autores-api')
 }
 
 
-export async function nuevoProfesorAPI(formData) {
-    const [nombre, especialidad, estado_civil] = formData.values()
+export async function nuevoLibroAPI(formData) {
+    const [titulo, editorial, fecha_publicacion] = formData.values()
 
-    const response = await fetch('http://localhost:3001/profesores', {
+    const response = await fetch('http://localhost:3001/libros', {
         method: 'POST',
-        body: JSON.stringify({ nombre, especialidad, estado_civil, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ titulo, editorial, fecha_publicacion, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
 
-    revalidatePath('/profesores-api')
+    revalidatePath('/libros-api')
 }
 
 
-export async function editarProfesorAPI(formData) {
-    const [id, nombre, especialidad, estado_civil] = formData.values()
+export async function editarLibroAPI(formData) {
+    const [id, titulo, editorial, fecha_publicacion] = formData.values()
 
-    const response = await fetch('http://localhost:3001/profesores/' + id, {
+    const response = await fetch('http://localhost:3001/libros/' + id, {
         method: 'PUT',
-        body: JSON.stringify({ nombre, especialidad, estado_civil, createdAt: new Date().toISOString() })
+        body: JSON.stringify({ titulo, editorial, fecha_publicacion, createdAt: new Date().toISOString() })
     })
     const data = await response.json()
-    revalidatePath('/profesores-api')
+    revalidatePath('/libros-api')
 }
 
 
-export async function eliminarProfesorAPI(formData) {
+export async function eliminarLibroAPI(formData) {
     const id = formData.get('id')
 
-    await fetch('http://localhost:3001/profesores/' + id, { method: 'DELETE' })
+    await fetch('http://localhost:3001/libros/' + id, { method: 'DELETE' })
 
-    revalidatePath('/profesores-api')
+    revalidatePath('/libros-api')
 }
 
 
@@ -170,8 +170,8 @@ export async function eliminarProfesorAPI(formData) {
 
 
 const usuarios = [
-    { nombre: 'usuario1', key: 'usuario1' },
-    { nombre: 'usuario2', key: 'usuario2' },
+    { titulo: 'usuario1', key: 'usuario1' },
+    { titulo: 'usuario2', key: 'usuario2' },
 ]
 
 export async function login(formData) {
@@ -185,7 +185,7 @@ export async function login(formData) {
 
     // Comprobar si credenciales son válidas
     // const authenticated = true  // suponemos que son válidas
-    const encontrado = usuarios.find(usuario => name == usuario.nombre && key == usuario.key)
+    const encontrado = usuarios.find(usuario => name == usuario.titulo && key == usuario.key)
 
     if (!encontrado) return
 

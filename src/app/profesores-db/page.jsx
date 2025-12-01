@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Fallback from "@/components/fallback";
-import Profesores from "@/components/db-profesores";
-import ProfesorNuevo from "@/components/db-profesor-nuevo";
+import Profesores from "@/components/db-libros";
+import ProfesorNuevo from "@/components/db-libro-nuevo";
 
 
 

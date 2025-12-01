@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Fallback from "@/components/fallback";
-import Profesores from "@/components/api-profesores";
-import ProfesorNuevoAPI from "@/components/api-profesor-nuevo";
+import Profesores from "@/components/api-libros";
+import ProfesorNuevoAPI from "@/components/api-libro-nuevo";
 
 
 async function PaginaProfesores({ searchParams }) {
